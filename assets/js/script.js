@@ -50,7 +50,7 @@ $(function () {
         $("#name-input-form").hide();
         $("#country-input-form").removeClass("hide");
         $(".speech-bubble-text").hide();
-        welcomeMessage = $(`<p class="speech-bubble-text">Hi! Where are you going today</p>`);
+        welcomeMessage = $(`<p class="speech-bubble-text">Hi ${userName}! Where are you going today?</p>`);
         $(".speech-bubble-container").append(welcomeMessage);
     });
     // Input form for country name
