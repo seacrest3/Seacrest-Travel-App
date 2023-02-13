@@ -78,6 +78,36 @@ $(function () {
             $("#flag-container").empty();
             let flag = $(`<img src="${response[0].flag}" class="flag">`);
             $("#flag-container").append(flag);
+
+            $(".speech-bubble-container").append('<input type="checkbox" value="chkBox" id="check">')
+                .append('<label for="check"> Please tick if you ever been to ' + response[0].name + '?</label>');
+            isVisited = $("#check").is(":checked");
+
+            // create user object from submission
+            var userInput = [{
+                name: userName,
+                country: countryName,
+                visited: isVisited,
+            }];
+
+            console.log("The value of userInput: " + JSON.stringify(userInput));
+            console.log("The value of user.name: " + userInput[0].name);
+            console.log("The value of user.country: " + userInput[0].country);
+            console.log("The value of user.visit: " + userInput[0].visited);
+            // localStorage.clear();
+            var userRecord = localStorage.getItem('userLog');
+            if (userRecord != null) {
+                var userInf = JSON.parse(localStorage.getItem('userLog'));
+            } else {
+                userInf = [];
+            }
+
+            // JSON.stringify(userInput[0]);
+            userInf.push(userInput[0]);
+            localStorage.setItem("userLog", JSON.stringify(userInf));
+            var userInf2 = JSON.parse(localStorage.getItem('userLog'));
+            console.log("The value getting from localStorage after pushing: " + JSON.stringify(userInf2));
+            console.log("No. of Users: " + userInf2.length);
         });
     });
 
@@ -115,9 +145,26 @@ $(function () {
             $(".speech-bubble-container").empty();
             welcomeMessage = (`<p class="speech-bubble-text">What would you like to know about ${response[0].name} ?`);
             $(".speech-bubble-container").append(welcomeMessage);
-            $(".speech-bubble-container").append('<input type="checkbox" value="chkBox" id="check">')
-            .append('<label for="check"> Please tick if you ever been to ' + response[0].name + '?</label>');
-            isVisited = $("#check").is(":checked");
+
+            
+        })
+    });
+
+    $("#welcome-globey").on("click", function (event) {
+        event.preventDefault();
+        // $(".speech-bubble-text").hide();
+
+        var queryURLCountry = "https://restcountries.com/v2/name/" + countryName;
+        $.ajax({
+            url: queryURLCountry,
+            method: "GET",
+            error: function (err) {
+                displayErrorScreen();
+            }
+        }).then(function (response) {
+            $(".speech-bubble-container").empty();
+            welcomeMessage = (`<p class="speech-bubble-text">What would you like to know about ${response[0].name} ?`);
+            $(".speech-bubble-container").append(welcomeMessage);
             $(".btns-container").removeClass("hide");
             $('#radio-div').removeClass("hide");
             $('#saveBtn').removeClass("hide");
@@ -129,31 +176,7 @@ $(function () {
     $(".btns-container").on("click", ".btn", function (event) {
         // Prevent the default behavior
         event.preventDefault();
-        // create user object from submission
-         var userInput = [{
-            name: userName,
-            country: countryName,
-            visited: isVisited,
-        }];
-
-        console.log("The value of userInput: " + JSON.stringify(userInput));
-        console.log("The value of user.name: " + userInput[0].name);
-        console.log("The value of user.country: " + userInput[0].country);
-        console.log("The value of user.visit: " + userInput[0].visited);
-        // localStorage.clear();
-        var userRecord = localStorage.getItem('userLog');
-        if (userRecord != null) {
-            var userInf = JSON.parse(localStorage.getItem('userLog'));
-        } else {
-            userInf =[];
-        }
-
-    // JSON.stringify(userInput[0]);
-        userInf.push(userInput[0]);
-        localStorage.setItem("userLog", JSON.stringify(userInf));
-        var userInf2 = JSON.parse(localStorage.getItem('userLog'));
-        console.log("The value getting from localStorage after pushing: " + JSON.stringify(userInf2));
-        console.log("No. of Users: " + userInf2.length);
+        
 
         let buttonClicked = event.target.innerHTML;
         var queryURLCountry = "https://restcountries.com/v2/name/" + countryName;
