@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Travel App</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="page-container container-fluid">   
+        <button id="home-button">Home</button>
+        <div class="countries-visited-container">
+
+        </div>
+
+        <div class="top-row row ">
+            <div class="speech-bubble-container col-4">
+        
+        
+            </div>
+            <div class="col-4 hide" id="globey-container">
+                        <img class="globey" id="welcome-globey" src="assets/images/Global Image.svg">
+            </div>
+            <!-- Info on the country and the button clicked to go here -->
+            <div class="col-8 flag-container " id="flag-container">
+        
+            </div>
+        
+        </div>
+
+
+        <div class="bottom-row row">
+            <!-- Globey - our Mascot -->
+            <!-- <div class="col-12 hide" id="globey-container">
+                <img class="globey" id="welcome-globey" src="assets/images/Global Image.svg">
+            </div> -->
+            <div class="col-3 btns-container hide">
+                <button type="button" class="btn btn-primary btn-lg infoBtns" id="populationBtn">Population</button>
+                <button type="button" class="btn btn-primary btn-lg infoBtns" id="capitalBtn">Capital</button>
+                <button type="button" class="btn btn-primary btn-lg infoBtns" id="languageBtn">Language</button>
+                <button type="button" class="btn btn-primary btn-lg infoBtns" id="weatherBtn">Weather</button>
+                <button type="button" class="btn btn-primary btn-lg infoBtns" id="currencyBtn">Currency</button>
+                <button type="button" class="btn btn-primary btn-lg infoBtns" id="regionBtn">Region</button>
+                <!-- <button type="button" class="btn btn-primary btn-lg infoBtns" id="nativeNameBtn">Native Name</button> -->
+            </div>
+            <div class="col-12 features-container">
+                
+                <!-- Input Form -->
+                <!-- <form id="search-form"> -->
+                    <!-- <input type="text" id="search-input" placeholder="Search New Country..."><br> -->
+                <form id="name-input-form" class="col-12 input-form">
+                    <input type="image" class="globey" id="input-name" src="assets/images/Global Image.svg" value="Submit">
+                    <input type="text" id="name-input" placeholder="Enter your name">
+                </form>
+
+                <form id="country-input-form" class="col-12 input-form hide">
+                    <input type="image" class="globey" id="input-country" src="assets/images/Global Image.svg" value="Submit">
+                    <input type="text" id="country-input" placeholder="Enter a country">
+                </form>
+
+               <button type="button" class="btn btn-primary btn-lg hide" id="saveBtn"></button>
+                
+            </div>
+
+
+
+        </div> <!--End ofbottom row-->
+
+
+    </div>
+<!-- Moment.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>
