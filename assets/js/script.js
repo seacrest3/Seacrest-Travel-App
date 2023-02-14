@@ -138,7 +138,7 @@ $(function () {
             console.log("The value of user.name: " + userInput[0].name);
             console.log("The value of user.country: " + userInput[0].country);
             console.log("The value of user.visit: " + userInput[0].visited);
-            // localStorage.clear();
+
             var userRecord = localStorage.getItem('userLog');
             if (userRecord != null) {
                 var userInf = JSON.parse(localStorage.getItem('userLog'));
@@ -152,7 +152,7 @@ $(function () {
             var userInf2 = JSON.parse(localStorage.getItem('userLog'));
             console.log("The value getting from localStorage after pushing: " + JSON.stringify(userInf2));
             console.log("No. of Users: " + userInf2.length);
-
+            // localStorage.clear();
         })
     });
 
