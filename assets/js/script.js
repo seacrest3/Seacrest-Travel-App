@@ -3,7 +3,7 @@ let countryPage = false;
 let countriesVisited = [];
 let userName = "";
 let countryName = "";
-let isVisited = "";
+let isVisited = "false";
 
 // logs weather response based on city parameter
 function getWeatherCondition(city) {
@@ -82,7 +82,6 @@ $(function () {
             $(".speech-bubble-container")
                 .append('<input type="checkbox" id="check">')
                 .append('<label for="check">Please tick if you ever been to ' + response[0].name + '?</label>');
-            isVisited = "false";
             $(document).ready(function () {
                 $('#check').click(function () {
                     isVisited = "true";
@@ -152,7 +151,7 @@ $(function () {
             var userInf2 = JSON.parse(localStorage.getItem('userLog'));
             console.log("The value getting from localStorage after pushing: " + JSON.stringify(userInf2));
             console.log("No. of Users: " + userInf2.length);
-            // localStorage.clear();
+
         })
     });
 
